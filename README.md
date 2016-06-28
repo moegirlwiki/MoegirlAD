@@ -23,13 +23,15 @@ Show advertisement in moegirl
 
 `$wgMoegirlADFooterADCode = "advertice code in here";`   // 广告提供商给的代码，显示在页面底部
 
-`$wgMoegirlADSideBarEnabled = true`;    // 是否显示左侧sidebar 的广告，如果为 true 可以省略
+`$wgMoegirlADSideBarEnabled = true;`    // 是否显示左侧sidebar 的广告，如果为 true 可以省略
 
 `$wgMoegirlADSideBarADName;`   // 设置 Sidebar 中分组的标题
 
 `$wgMoegirlADSideBarADCode = "advertice code in here";`   // 广告提供商给的代码，显示在Sidebar
 
+`$wgMoegirlADMobileEnabled = true;`
 
+`$wgMoegirlADMobileADCode = "mobile ad code in here";`
 
 
 

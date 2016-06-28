@@ -66,5 +66,5 @@ $wgHooks['SkinAfterContent'][] = 'MoegirlADHooks::onSkinAfterContent';
 $wgHooks['SiteNoticeAfter'][] = 'MoegirlADHooks::onSiteNoticeAfter';
 $wgHooks['SkinAfterBottomScripts'][] = 'MoegirlADHooks::onSkinAfterBottomScripts';
 $wgHooks['SkinBuildSidebar'][] = 'MoegirlADHooks::onSkinBuildSidebar';
+$wgHooks['BeforePageDisplayMobile'][] = 'MoegirlADHooks::onBeforePageDisplayMobile';
 
-?>

@@ -50,6 +50,16 @@ final class MoegirlADHooks {
 
     return true;
   }
+  
+  public static function onBeforePageDisplayMobile(OutputPage $out) {
+    global $wgMoegirlADMobileEnabled, $wgMoegirlADMobileADCode;
+
+    if (MoegirlADHooks::shouldShowADs() && $wgMoegirlADMobileEnabled) {
+      $out->addHTML($wgMoegirlADMobileADCode);
+    }
+
+    return true;
+  }
 
 
   /**
