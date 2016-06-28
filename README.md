@@ -15,7 +15,7 @@ Show advertisement in moegirl
 
 `$wgMoegirlADEnabled  = true;`  //是否显示广告，如果为 true 可以省略
 
-`$wgMoegirlADTopADCode = "advertice code in here";`   // 广告提供商给的代码，显示在顶部
+`$wgMoegirlADTopADCode = "advertice code in here";`   // 广告提供商给的代码，显示在顶部 (注意代码双引号改单引号)
 
 `$wgMoegirlADBottomADCode = "advertice code in here";`   // 广告提供商给的代码，显示wiki内容底部
 
