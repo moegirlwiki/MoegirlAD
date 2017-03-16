@@ -6,6 +6,9 @@
  * 
  * @license Apache-2.0+
  * @author Fish Thirteen < fishthrteen@qq.com >
+ *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+ * 注意这个版本针对MobileFrontEnd和有过修改！不要直接拖新版本覆盖！ by baskice
+ *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
  *
  */
 final class MoegirlADHooks {
@@ -21,10 +24,15 @@ final class MoegirlADHooks {
   }
 
   public static function onSiteNoticeAfter(&$siteNotice, $skin) {
-    global $wgMoegirlADTopADCode;
+    global $wgMoegirlADTopADCode, $wgMoegirlADMobileTopADCode;
 
     if (MoegirlADHooks::shouldShowADs()) {
-      $siteNotice = $wgMoegirlADTopADCode . $siteNotice;
+		//检查是否是移动版，是的话通过sitenotice这个位置展现移动广告
+		if (MobileContext::singleton()->shouldDisplayMobileView()) {
+			$siteNotice = $wgMoegirlADMobileTopADCode;
+		}else{
+			$siteNotice = $wgMoegirlADTopADCode . $siteNotice;
+		}
     }
 
     return true;
@@ -52,7 +60,7 @@ final class MoegirlADHooks {
   }
   
   public static function onBeforePageDisplayMobile(OutputPage $out) {
-    global $wgMoegirlADMobileEnabled, $wgMoegirlADMobileADCode;
+    global $wgMoegirlADMobileFooterEnabled, $wgMoegirlADMobileFooterADCode;
 
     if (MoegirlADHooks::shouldShowADs() && $wgMoegirlADMobileEnabled) {
       $out->addHTML($wgMoegirlADMobileADCode);
@@ -73,8 +81,8 @@ final class MoegirlADHooks {
     if ($wgMoegirlADEnabled) {
       $currentUser = RequestContext::getMain()->getUser();
 
-      //只对未登录用户和没有编辑过任何条目的用户显示广告
-      return !(is_object($currentUser) && $currentUser->isLoggedIn() && $currentUser->getEditCount() != null && $currentUser->getEditCount() > 0);
+      //只对5次编辑以下的用户显示广告
+      return !( $currentUser->getEditCount() > 5);
     } else {
       return false;
     }
