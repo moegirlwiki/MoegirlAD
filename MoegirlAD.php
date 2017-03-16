@@ -57,7 +57,9 @@ $wgMoegirlADSideBarEnabled = true;
 $wgMoegirlADSideBarADName = "Sidebar group name";
 $wgMoegirlADSideBarADCode = "Sidebar Adverticement";
 
-
+$wgMoegirlADMobileTopADCode = "Mobile Top Adverticement";
+$wgMoegirlADMobileFooterEnabled  = true;
+$wgMoegirlADMobileFooterADCode = "Mobile Footer Adverticement";
 
 $wgAutoloadClasses['MoegirlADHooks'] = __DIR__ . '/MoegirlAD.hooks.php';
 
