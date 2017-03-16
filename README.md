@@ -29,9 +29,12 @@ Show advertisement in moegirl
 
 `$wgMoegirlADSideBarADCode = "advertice code in here";`   // 广告提供商给的代码，显示在Sidebar
 
-`$wgMoegirlADMobileEnabled = true;`
 
-`$wgMoegirlADMobileADCode = "mobile ad code in here";`
+
+`$wgMoegirlADMobileTopADCode = "mobile ad code in here";`
+
+`$wgMoegirlADMobileFooterEnabled = true;`
+`$wgMoegirlADMobileFooterADCode = "mobile ad code in here";`
 
 
 
