@@ -34,6 +34,7 @@ Show advertisement in moegirl
 `$wgMoegirlADMobileTopADCode = "mobile ad code in here";`
 
 `$wgMoegirlADMobileFooterEnabled = true;`
+
 `$wgMoegirlADMobileFooterADCode = "mobile ad code in here";`
 
 
