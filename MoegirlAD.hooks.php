@@ -7,7 +7,7 @@
  * @license Apache-2.0+
  * @author Fish Thirteen < fishthrteen@qq.com >
  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
- * 注意这个版本针对MobileFrontEnd和有过修改！不要直接拖新版本覆盖！ by baskice
+ * 注意这个版本针对MobileFrontEnd和编辑次数有过修改！不要直接拖新版本覆盖！ by baskice
  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
  *
  */
