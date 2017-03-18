@@ -27,7 +27,7 @@ final class MoegirlADHooks {
 
     if (MoegirlADHooks::shouldShowADs()) {
 		// Determine the availability: If MobileFrontend exists and mobile view is enabled, present mobile ad
-		if (class_exists('MobileContext') && MobileContext::singleton()->shouldDisplayMobileView()) {
+		if (MoegirlADHooks::isMobileView()) {
 			$siteNotice = $wgMoegirlADMobileTopADCode;
 		} else {
 			$siteNotice = $wgMoegirlADTopADCode . $siteNotice;
@@ -68,12 +68,24 @@ final class MoegirlADHooks {
     global $wgMoegirlADEnabled, $wgMoegirlADEditCountQualification;
 
     if ($wgMoegirlADEnabled) {
-      $currentUser = RequestContext::getMain()->getUser();
+	  $currentReqContext = RequestContext::getMain();
+      $currentUser = $currentReqContext->getUser();
+
+	  // Ignore advertisements for all special pages on mobile device
+	  if (MoegirlADHooks::isMobileView()) {
+		$currentTitle = $currentReqContext->getTitle();
+		// Special namespace has NSID -1
+		if ($currentTitle->getNamespace() === -1) return false;
+	  }
 
       // Show advertisements for users that have given edits (default: 5) or less / guests
 	  return !( $currentUser->getEditCount() > $wgMoegirlADEditCountQualification);
     } else {
       return false;
     }
+  }
+
+  private static function isMobileView() {
+	return class_exists('MobileContext') && MobileContext::singleton()->shouldDisplayMobileView();
   }
 }
