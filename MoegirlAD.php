@@ -6,7 +6,7 @@ $wgExtensionCredits['parserhook'][] = array(
     'author' => array( 'Fish Thirteen', 'The Little Moe New LLC' ), 
     'url' => 'https://github.com/FishThirteen/MoegirlAD', 
     'description' => 'Show advertisement in the page header and page footer in Moegirlpedia',
-    'version'  => 0.2,
+    'version'  => 0.3,
     'license-name' => "Apache-2.0+",   // Short name of the license, links LICENSE or COPYING file if existing - string, added in 1.23.0
 );
 
