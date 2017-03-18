@@ -3,9 +3,9 @@
 $wgExtensionCredits['parserhook'][] = array(
     'path' => __FILE__,
     'name' => 'MoegirlAD',
-    'author' => 'Fish Thirteen', 
+    'author' => array( 'Fish Thirteen', 'The Little Moe New LLC' ), 
     'url' => 'https://github.com/FishThirteen/MoegirlAD', 
-    'description' => 'Show advertisement in the page header and page footer in moegirl',
+    'description' => 'Show advertisement in the page header and page footer in Moegirlpedia',
     'version'  => 0.2,
     'license-name' => "Apache-2.0+",   // Short name of the license, links LICENSE or COPYING file if existing - string, added in 1.23.0
 );
@@ -46,6 +46,12 @@ $wgExtensionCredits['parserhook'][] = array(
  *
  * $wgMoegirlADSideBarADCode
  *      - the Advertisement code used to show in the bottom of the side bar
+ *
+ * $wgMoegirlADMobileTopADCode
+ *      - the Advertisement code used for mobile view
+ *
+ * $wgMoegirlADEditCountQualification
+ *      - Minimum edit counts to hide advertisement
  * 
  */
 $wgMoegirlADEnabled  = true;
