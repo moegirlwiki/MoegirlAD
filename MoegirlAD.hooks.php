@@ -24,16 +24,20 @@ final class MoegirlADHooks {
 
   public static function onSiteNoticeAfter(&$siteNotice, $skin) {
     global $wgMoegirlADTopADCode, $wgMoegirlADMobileTopADCode;
+	$isMobileView = MoegirlADHooks::isMobileView();
 
     if (MoegirlADHooks::shouldShowADs()) {
 		// Determine the availability: If MobileFrontend exists and mobile view is enabled, present mobile ad
-		if (MoegirlADHooks::isMobileView()) {
+		if ($isMobileView) {
 			$siteNotice = $wgMoegirlADMobileTopADCode;
 		} else {
 			$siteNotice = $wgMoegirlADTopADCode . $siteNotice;
 		}
-    }
-
+    } else if ($isMobileView) {
+		// Fix by case: Since MobileFrontend will display SiteNotice for some users, clear site notice if we are in mobile view.
+		$siteNotice = '';
+	} 
+	
     return true;
   }
 
