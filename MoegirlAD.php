@@ -6,7 +6,7 @@ $wgExtensionCredits['parserhook'][] = array(
     'author' => 'Fish Thirteen', 
     'url' => 'https://github.com/FishThirteen/MoegirlAD', 
     'description' => 'Show advertisement in the page header and page footer in moegirl',
-    'version'  => 0.1,
+    'version'  => 0.2,
     'license-name' => "Apache-2.0+",   // Short name of the license, links LICENSE or COPYING file if existing - string, added in 1.23.0
 );
 
@@ -18,7 +18,7 @@ $wgExtensionCredits['parserhook'][] = array(
  *      - determine if show advertisement in moegirl.
  *
  * $wgMoegirlADTopADCode
- *      - the adverticement code form the advertising company in top bar
+ *      - the Advertisement code form the advertising company in top bar
  *      E.g.
  *      $wgMoegirlADADCode = <<<EOD
  * <!-- 728*90 -->
@@ -30,32 +30,32 @@ $wgExtensionCredits['parserhook'][] = array(
  * EOD;
  *
  * $wgMoegirlADBottomADCode
- *      - the adverticement code in bottom bar
+ *      - the Advertisement code in bottom bar
  *
  * $wgMoegirlADFooterEnabled
- *      - show/hide the footer adverticement
+ *      - show/hide the footer Advertisement
  *
  * $wgMoegirlADFooterADCode
- *      - the adverticement code used to show in below of the footer
+ *      - the Advertisement code used to show in below of the footer
  *
  *$wgMoegirlADSideBarEnabled
- *      - show/hide the sidebar adverticement
+ *      - show/hide the sidebar Advertisement
  * 
  * $wgMoegirlADSideBarADName
  *      - the side bar group name
  *
  * $wgMoegirlADSideBarADCode
- *      - the adverticement code used to show in the bottom of the side bar
+ *      - the Advertisement code used to show in the bottom of the side bar
  * 
  */
 $wgMoegirlADEnabled  = true;
-$wgMoegirlADTopADCode = "Top Adverticement";
-$wgMoegirlADBottomADCode = "Bottom Adverticement";
+$wgMoegirlADTopADCode = "Top Advertisement";
+$wgMoegirlADBottomADCode = "Bottom Advertisement";
 $wgMoegirlADFooterEnabled = true;
-$wgMoegirlADFooterADCode = "Foot Adverticement";
+$wgMoegirlADFooterADCode = "Foot Advertisement";
 $wgMoegirlADSideBarEnabled = true;
 $wgMoegirlADSideBarADName = "Sidebar group name";
-$wgMoegirlADSideBarADCode = "Sidebar Adverticement";
+$wgMoegirlADSideBarADCode = "Sidebar Advertisement";
 
 
 
