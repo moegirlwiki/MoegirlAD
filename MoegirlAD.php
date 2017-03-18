@@ -55,16 +55,15 @@ $wgExtensionCredits['parserhook'][] = array(
  * 
  */
 $wgMoegirlADEnabled  = true;
-$wgMoegirlADTopADCode = "Top Advertisement";
-$wgMoegirlADBottomADCode = "Bottom Advertisement";
+$wgMoegirlADTopADCode = "";
+$wgMoegirlADBottomADCode = "";
 $wgMoegirlADFooterEnabled = true;
-$wgMoegirlADFooterADCode = "Foot Advertisement";
+$wgMoegirlADFooterADCode = "";
 $wgMoegirlADSideBarEnabled = true;
-$wgMoegirlADSideBarADName = "Sidebar group name";
-$wgMoegirlADSideBarADCode = "Sidebar Advertisement";
-$wgMoegirlADMobileTopADCode = "Mobile Top Advertisement";
+$wgMoegirlADSideBarADName = "";
+$wgMoegirlADSideBarADCode = "";
+$wgMoegirlADMobileTopADCode = "";
 $wgMoegirlADEditCountQualification = 5;
-
 
 
 $wgAutoloadClasses['MoegirlADHooks'] = __DIR__ . '/MoegirlAD.hooks.php';
