@@ -3,10 +3,10 @@
 $wgExtensionCredits['parserhook'][] = array(
     'path' => __FILE__,
     'name' => 'MoegirlAD',
-    'author' => 'Fish Thirteen', 
+    'author' => array( 'Fish Thirteen', 'The Little Moe New LLC' ), 
     'url' => 'https://github.com/FishThirteen/MoegirlAD', 
-    'description' => 'Show advertisement in the page header and page footer in moegirl',
-    'version'  => 0.1,
+    'description' => 'Show advertisement in the page header and page footer in Moegirlpedia',
+    'version'  => 0.3,
     'license-name' => "Apache-2.0+",   // Short name of the license, links LICENSE or COPYING file if existing - string, added in 1.23.0
 );
 
@@ -18,7 +18,7 @@ $wgExtensionCredits['parserhook'][] = array(
  *      - determine if show advertisement in moegirl.
  *
  * $wgMoegirlADTopADCode
- *      - the adverticement code form the advertising company in top bar
+ *      - the Advertisement code form the advertising company in top bar
  *      E.g.
  *      $wgMoegirlADADCode = <<<EOD
  * <!-- 728*90 -->
@@ -30,36 +30,41 @@ $wgExtensionCredits['parserhook'][] = array(
  * EOD;
  *
  * $wgMoegirlADBottomADCode
- *      - the adverticement code in bottom bar
+ *      - the Advertisement code in bottom bar
  *
  * $wgMoegirlADFooterEnabled
- *      - show/hide the footer adverticement
+ *      - show/hide the footer Advertisement
  *
  * $wgMoegirlADFooterADCode
- *      - the adverticement code used to show in below of the footer
+ *      - the Advertisement code used to show in below of the footer
  *
  *$wgMoegirlADSideBarEnabled
- *      - show/hide the sidebar adverticement
+ *      - show/hide the sidebar Advertisement
  * 
  * $wgMoegirlADSideBarADName
  *      - the side bar group name
  *
  * $wgMoegirlADSideBarADCode
- *      - the adverticement code used to show in the bottom of the side bar
+ *      - the Advertisement code used to show in the bottom of the side bar
+ *
+ * $wgMoegirlADMobileTopADCode
+ *      - the Advertisement code used for mobile view
+ *
+ * $wgMoegirlADEditCountQualification
+ *      - Minimum edit counts to hide advertisement
  * 
  */
 $wgMoegirlADEnabled  = true;
-$wgMoegirlADTopADCode = "Top Adverticement";
-$wgMoegirlADBottomADCode = "Bottom Adverticement";
+$wgMoegirlADTopADCode = "";
+$wgMoegirlADBottomADCode = "";
 $wgMoegirlADFooterEnabled = true;
-$wgMoegirlADFooterADCode = "Foot Adverticement";
+$wgMoegirlADFooterADCode = "";
 $wgMoegirlADSideBarEnabled = true;
-$wgMoegirlADSideBarADName = "Sidebar group name";
-$wgMoegirlADSideBarADCode = "Sidebar Adverticement";
+$wgMoegirlADSideBarADName = "";
+$wgMoegirlADSideBarADCode = "";
+$wgMoegirlADMobileTopADCode = "";
+$wgMoegirlADEditCountQualification = 5;
 
-$wgMoegirlADMobileTopADCode = "Mobile Top Adverticement";
-$wgMoegirlADMobileFooterEnabled  = true;
-$wgMoegirlADMobileFooterADCode = "Mobile Footer Adverticement";
 
 $wgAutoloadClasses['MoegirlADHooks'] = __DIR__ . '/MoegirlAD.hooks.php';
 
@@ -68,5 +73,3 @@ $wgHooks['SkinAfterContent'][] = 'MoegirlADHooks::onSkinAfterContent';
 $wgHooks['SiteNoticeAfter'][] = 'MoegirlADHooks::onSiteNoticeAfter';
 $wgHooks['SkinAfterBottomScripts'][] = 'MoegirlADHooks::onSkinAfterBottomScripts';
 $wgHooks['SkinBuildSidebar'][] = 'MoegirlADHooks::onSkinBuildSidebar';
-$wgHooks['BeforePageDisplayMobile'][] = 'MoegirlADHooks::onBeforePageDisplayMobile';
-
