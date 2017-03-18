@@ -6,6 +6,8 @@
  * 
  * @license Apache-2.0+
  * @author Fish Thirteen < fishthrteen@qq.com >
+ * @author Baskice
+ * @author Bingxing Wang (The Little Moe New LLC) <ben@lmn.cat>
  *
  */
 final class MoegirlADHooks {
@@ -21,10 +23,15 @@ final class MoegirlADHooks {
   }
 
   public static function onSiteNoticeAfter(&$siteNotice, $skin) {
-    global $wgMoegirlADTopADCode;
+    global $wgMoegirlADTopADCode, $wgMoegirlADMobileTopADCode;
 
     if (MoegirlADHooks::shouldShowADs()) {
-      $siteNotice = $wgMoegirlADTopADCode . $siteNotice;
+		// Determine the availability: If MobileFrontend exists and mobile view is enabled, present mobile ad
+		if (class_exists('MobileContext') && MobileContext::singleton()->shouldDisplayMobileView()) {
+			$siteNotice = $wgMoegirlADMobileTopADCode;
+		} else {
+			$siteNotice = $wgMoegirlADTopADCode . $siteNotice;
+		}
     }
 
     return true;
@@ -58,18 +65,15 @@ final class MoegirlADHooks {
    * @return boolean 
    */
   public static function shouldShowADs() {
-    global $wgMoegirlADEnabled;
+    global $wgMoegirlADEnabled, $wgMoegirlADEditCountQualification;
 
     if ($wgMoegirlADEnabled) {
       $currentUser = RequestContext::getMain()->getUser();
 
-      //只对未登录用户和没有编辑过任何条目的用户显示广告
-      return !(is_object($currentUser) && $currentUser->isLoggedIn() && $currentUser->getEditCount() != null && $currentUser->getEditCount() > 0);
+      // Show advertisements for users that have given edits (default: 5) or less / guests
+	  return !( $currentUser->getEditCount() > $wgMoegirlADEditCountQualification);
     } else {
       return false;
     }
   }
 }
-
-
-?>

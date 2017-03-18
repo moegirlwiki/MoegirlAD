@@ -56,6 +56,8 @@ $wgMoegirlADFooterADCode = "Foot Advertisement";
 $wgMoegirlADSideBarEnabled = true;
 $wgMoegirlADSideBarADName = "Sidebar group name";
 $wgMoegirlADSideBarADCode = "Sidebar Advertisement";
+$wgMoegirlADMobileTopADCode = "Mobile Top Advertisement";
+$wgMoegirlADEditCountQualification = 5;
 
 
 
@@ -66,5 +68,3 @@ $wgHooks['SkinAfterContent'][] = 'MoegirlADHooks::onSkinAfterContent';
 $wgHooks['SiteNoticeAfter'][] = 'MoegirlADHooks::onSiteNoticeAfter';
 $wgHooks['SkinAfterBottomScripts'][] = 'MoegirlADHooks::onSkinAfterBottomScripts';
 $wgHooks['SkinBuildSidebar'][] = 'MoegirlADHooks::onSkinBuildSidebar';
-
-?>
