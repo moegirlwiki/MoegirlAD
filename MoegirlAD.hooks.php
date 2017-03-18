@@ -6,9 +6,8 @@
  * 
  * @license Apache-2.0+
  * @author Fish Thirteen < fishthrteen@qq.com >
- *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
- * 注意这个版本针对MobileFrontEnd和编辑次数有过修改！不要直接拖新版本覆盖！ by baskice
- *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * 
+ * @author Baskice
+ * @author Bingxing Wang (The Little Moe New LLC) <ben@lmn.cat>
  *
  */
 final class MoegirlADHooks {
@@ -25,16 +24,20 @@ final class MoegirlADHooks {
 
   public static function onSiteNoticeAfter(&$siteNotice, $skin) {
     global $wgMoegirlADTopADCode, $wgMoegirlADMobileTopADCode;
+	$isMobileView = MoegirlADHooks::isMobileView();
 
     if (MoegirlADHooks::shouldShowADs()) {
-		//检查是否是移动版，是的话通过sitenotice这个位置展现移动广告
-		if (MobileContext::singleton()->shouldDisplayMobileView()) {
+		// Determine the availability: If MobileFrontend exists and mobile view is enabled, present mobile ad
+		if ($isMobileView) {
 			$siteNotice = $wgMoegirlADMobileTopADCode;
-		}else{
+		} else {
 			$siteNotice = $wgMoegirlADTopADCode . $siteNotice;
 		}
-    }
-
+    } else if ($isMobileView) {
+		// Fix by case: Since MobileFrontend will display SiteNotice for some users, clear site notice if we are in mobile view.
+		$siteNotice = '';
+	} 
+	
     return true;
   }
 
@@ -58,16 +61,6 @@ final class MoegirlADHooks {
 
     return true;
   }
-  
-  public static function onBeforePageDisplayMobile(OutputPage $out) {
-    global $wgMoegirlADMobileFooterEnabled, $wgMoegirlADMobileFooterADCode;
-
-    if (MoegirlADHooks::shouldShowADs() && $wgMoegirlADMobileEnabled) {
-      $out->addHTML($wgMoegirlADMobileADCode);
-    }
-
-    return true;
-  }
 
 
   /**
@@ -76,18 +69,27 @@ final class MoegirlADHooks {
    * @return boolean 
    */
   public static function shouldShowADs() {
-    global $wgMoegirlADEnabled;
+    global $wgMoegirlADEnabled, $wgMoegirlADEditCountQualification;
 
     if ($wgMoegirlADEnabled) {
-      $currentUser = RequestContext::getMain()->getUser();
+	  $currentReqContext = RequestContext::getMain();
+      $currentUser = $currentReqContext->getUser();
 
-      //只对5次编辑以下的用户显示广告
-      return !( $currentUser->getEditCount() > 5);
+	  // Ignore advertisements for all special pages on mobile device
+	  if (MoegirlADHooks::isMobileView()) {
+		$currentTitle = $currentReqContext->getTitle();
+		// Special namespace has NSID -1
+		if ($currentTitle->getNamespace() === -1) return false;
+	  }
+
+      // Show advertisements for users that have given edits (default: 5) or less / guests
+	  return !( $currentUser->getEditCount() > $wgMoegirlADEditCountQualification);
     } else {
       return false;
     }
   }
+
+  private static function isMobileView() {
+	return class_exists('MobileContext') && MobileContext::singleton()->shouldDisplayMobileView();
+  }
 }
-
-
-?>
