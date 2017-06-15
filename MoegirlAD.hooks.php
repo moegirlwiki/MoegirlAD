@@ -66,7 +66,7 @@ final class MoegirlADHooks {
    * @param array $ids
    */
   public static function onGetDoubleUnderscoreIDs( array &$ids ) {
-      $ids[] = 'suppressad';
+      $ids[] = 'noad';
   }
 
   /**
