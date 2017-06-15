@@ -6,10 +6,10 @@ $wgExtensionCredits['parserhook'][] = array(
     'author' => array( 'Fish Thirteen', 'The Little Moe New LLC' ),
     'url' => 'https://github.com/FishThirteen/MoegirlAD',
     'description' => 'Show advertisement in the page header and page footer in Moegirlpedia',
-    'version'  => 0.3,
+    'version'  => 0.4,
     'license-name' => "Apache-2.0+",   // Short name of the license, links LICENSE or COPYING file if existing - string, added in 1.23.0
 );
-$wgExtensionMessagesFiles['MoegirlAD'] = __DIR__ . '/MoegirlAD.i18n.php';
+$wgExtensionMessagesFiles['MoegirlADMagic'] = __DIR__ . '/MoegirlAD.i18n.magic.php';
 
 /*
  * Options: (Check these settings in LocalSettings.php file)
