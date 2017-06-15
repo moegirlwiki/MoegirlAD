@@ -9,7 +9,7 @@ $wgExtensionCredits['parserhook'][] = array(
     'version'  => 0.3,
     'license-name' => "Apache-2.0+",   // Short name of the license, links LICENSE or COPYING file if existing - string, added in 1.23.0
 );
-
+$wgExtensionMessagesFiles['MoegirlAD'] = __DIR__ . '/MoegirlAD.i18n.php';
 
 /*
  * Options: (Check these settings in LocalSettings.php file)
@@ -73,5 +73,3 @@ $wgHooks['SkinAfterContent'][] = 'MoegirlADHooks::onSkinAfterContent';
 $wgHooks['SiteNoticeAfter'][] = 'MoegirlADHooks::onSiteNoticeAfter';
 $wgHooks['SkinAfterBottomScripts'][] = 'MoegirlADHooks::onSkinAfterBottomScripts';
 $wgHooks['SkinBuildSidebar'][] = 'MoegirlADHooks::onSkinBuildSidebar';
-
-$wgExtensionMessagesFiles['MoegirlAD'] = __DIR__ . '/MoegirlAD.i18n.php';
