@@ -1,9 +1,9 @@
 <?php
 
 $magicWords = [
-    'mSuppressAD' => [ 10155, 'NOAD' ]
+    'mSuppressAD' => [ 1, 'NOAD' ]
 ];
 
 $magicWords['en'] = [
-  'mSuppressAD' => [ 10155, 'NOAD' ]
+  'mSuppressAD' => [ 1, 'NOAD' ]
 ];
