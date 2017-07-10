@@ -95,7 +95,7 @@ final class MoegirlADHooks {
         $suppressAdAttributes = $pageProps->getProperties($currentTitle, 'noad');
 
         // Suppress advertisement if attribute is set
-        if (empty($suppressAdAttributes)) return false;
+        if (!empty($suppressAdAttributes)) return false;
     }
 
     // Show advertisements for users that have given edits (default: 5) or less / guests
