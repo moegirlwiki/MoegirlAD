@@ -3,18 +3,18 @@
 $wgExtensionCredits['parserhook'][] = array(
     'path' => __FILE__,
     'name' => 'MoegirlAD',
-    'author' => array( 'Fish Thirteen', 'The Little Moe New LLC' ), 
-    'url' => 'https://github.com/FishThirteen/MoegirlAD', 
+    'author' => array( 'Fish Thirteen', 'The Little Moe New LLC' ),
+    'url' => 'https://github.com/FishThirteen/MoegirlAD',
     'description' => 'Show advertisement in the page header and page footer in Moegirlpedia',
-    'version'  => 0.3,
+    'version'  => 0.42,
     'license-name' => "Apache-2.0+",   // Short name of the license, links LICENSE or COPYING file if existing - string, added in 1.23.0
 );
-
+$wgExtensionMessagesFiles['MoegirlADMagic'] = __DIR__ . '/MoegirlAD.i18n.magic.php';
 
 /*
  * Options: (Check these settings in LocalSettings.php file)
  *
- * $wgMoegirlADEnabled 
+ * $wgMoegirlADEnabled
  *      - determine if show advertisement in moegirl.
  *
  * $wgMoegirlADTopADCode
@@ -40,7 +40,7 @@ $wgExtensionCredits['parserhook'][] = array(
  *
  *$wgMoegirlADSideBarEnabled
  *      - show/hide the sidebar Advertisement
- * 
+ *
  * $wgMoegirlADSideBarADName
  *      - the side bar group name
  *
@@ -52,7 +52,7 @@ $wgExtensionCredits['parserhook'][] = array(
  *
  * $wgMoegirlADEditCountQualification
  *      - Minimum edit counts to hide advertisement
- * 
+ *
  */
 $wgMoegirlADEnabled  = true;
 $wgMoegirlADTopADCode = "";
@@ -73,3 +73,4 @@ $wgHooks['SkinAfterContent'][] = 'MoegirlADHooks::onSkinAfterContent';
 $wgHooks['SiteNoticeAfter'][] = 'MoegirlADHooks::onSiteNoticeAfter';
 $wgHooks['SkinAfterBottomScripts'][] = 'MoegirlADHooks::onSkinAfterBottomScripts';
 $wgHooks['SkinBuildSidebar'][] = 'MoegirlADHooks::onSkinBuildSidebar';
+$wgHooks['GetDoubleUnderscoreIDs'][] = 'MoegirlADHooks::onGetDoubleUnderscoreIDs';
