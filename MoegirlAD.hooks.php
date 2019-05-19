@@ -12,24 +12,38 @@
  */
 final class MoegirlADHooks {
 
-  public static function onSkinAfterContent(&$data, $skin) {
-    global $wgMoegirlADBottomADCode;
+	public static function BeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+		global $wgMoegirlADHeaderscriptDesktop;
+		$isMobileView = MoegirlADHooks::isMobileView();
+		if (!$isMobileView) {
+			$out->addHeadItem('ADScriptforDesktop',$wgMoegirlADHeaderscriptDesktop);
+		}
+	}
 
-    if (MoegirlADHooks::shouldShowADs()) {
-      $data .= $wgMoegirlADBottomADCode;
-    }
+	public static function BeforePageDisplayMobile( OutputPage &$out, Skin &$skin ) {
+		global $wgMoegirlADHeaderscriptMobile;
+		$out->addHeadItem('ADScriptforMobile',$wgMoegirlADHeaderscriptMobile);
+	}
 
-    return true;
-  }
 
-  public static function onSiteNoticeAfter(&$siteNotice, $skin) {
+	public static function onSkinAfterContent(&$data, $skin) {
+		global $wgMoegirlADBottomADCode;
+
+		if (MoegirlADHooks::shouldShowADs()) {
+		  $data .= $wgMoegirlADBottomADCode;
+		}
+
+		return true;
+	}
+
+	public static function onSiteNoticeAfter(&$siteNotice, $skin) {
     global $wgMoegirlADTopADCode, $wgMoegirlADMobileTopADCode;
 	$isMobileView = MoegirlADHooks::isMobileView();
 
     if (MoegirlADHooks::shouldShowADs()) {
 		// Determine the availability: If MobileFrontend exists and mobile view is enabled, present mobile ad
 		if ($isMobileView) {
-			$siteNotice = $wgMoegirlADMobileTopADCode;
+			$siteNotice = $wgMoegirlADMobileTopADCode;			
 		} else {
 			$siteNotice = $wgMoegirlADTopADCode . $siteNotice;
 		}
@@ -103,7 +117,7 @@ final class MoegirlADHooks {
     return !( $currentUser->getEditCount() > $wgMoegirlADEditCountQualification);
   }
 
-  private static function isMobileView() {
+  public static function isMobileView() {
 	return class_exists('MobileContext') && MobileContext::singleton()->shouldDisplayMobileView();
   }
 }
