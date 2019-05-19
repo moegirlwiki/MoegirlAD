@@ -61,17 +61,8 @@ $wgExtensionMessagesFiles['MoegirlADMagic'] = __DIR__ . '/MoegirlAD.i18n.magic.p
  *
  */
 $wgMoegirlADEnabled  = true;
-$wgMoegirlADHeaderscriptDesktop = "<script src='https://dup.baidustatic.com/js/ds.js'></script>";
-$wgMoegirlADHeaderscriptMobile =<<<'START_END_MARKER'
-<script> src="https://dup.baidustatic.com/js/dm.js"></script>
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<script>
-				 (adsbygoogle = window.adsbygoogle || []).push({
-					  google_ad_client: "ca-pub-1103773884433732",
-					  enable_page_level_ads: true
-				 });
-</script>
-START_END_MARKER;
+$wgMoegirlADHeaderscriptDesktop = "";
+$wgMoegirlADHeaderscriptMobile = "";
 
 
 $wgMoegirlADTopADCode = "";
